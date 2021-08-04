@@ -1,0 +1,48 @@
+{% extends "admin/layouts.njk" %}
+
+{% block content %}
+    <main class="admin-main">
+
+        <div class="header recipes">
+            <h1>Gerenciar receitas</h1>
+            {% if session.isAdmin == true %}
+                <button id="/admin/recipes/create" class="purple-background" onclick="redirectButtonToIdLocation(this)">Novo</button>
+                {% else %}
+                    <button id="/admin/profile/recipes/create" class="purple-background" onclick="redirectButtonToIdLocation(this)">Novo</button>
+            {% endif %}
+        </div>
+
+        <section class="listing-recipes">
+
+            {% for recipe in recipes %}
+                <div class="recipe-card listing">
+                    {% if not recipe.files_path[0] %}
+                        <img class="recipe-img" id="{{recipe.id}}" src="http://placehold.it/508x508?text=RECEITA SEM FOTO" alt="{{recipe.title}}" style="object-fit: cover">
+                        {% else %}
+                            <img class="recipe-img" id="{{recipe.id}}" src="{{recipe.files_path[0]}}" alt="{{recipe.title}}">
+                    {% endif %}
+                    <div>
+                        <p class="recipe-name">{{recipe.title}}</p>
+                        {% for chef in chefs %}
+                            {% if chef.id == recipe.chef_id%}
+                                <p class="creator-name"> Por {{chef.name}} </p>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for user in users %}
+                            {% if user.id == recipe.user_id%}
+                                <p class="creator-name"> Por {{user.name}} </p>
+                            {% endif %}
+                        {% endfor %}
+                        <a href="/admin/recipes/{{recipe.id}}" class="purple-button" >Visualizar</a>
+                    </div>
+                </div>
+            {% endfor %}
+            
+        </section>
+        
+    </main>
+
+    
+
+{% endblock %}

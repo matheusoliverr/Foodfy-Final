@@ -1,0 +1,36 @@
+{% extends "admin/layouts.njk" %}
+
+{% block content %}
+    <main class="admin-main">
+
+        <div class="header">
+            <h1>Usuários</h1>
+            <button id="/admin/users/create" class="purple-background" onclick="redirectButtonToIdLocation(this)">Novo</button>
+        </div>
+
+
+        <section class="listing-users">
+
+            {% for user in users %}
+            <div class="user-card listing">
+                <p class="user-name">{{user.name}}</p>
+                <p class="user-email">{{user.email}}</p>
+                <div class="manage-users-buttons delete-area">
+                    <a href="/admin/users/{{user.id}}/edit" class="purple-button">Editar</a>
+                    <form method="POST" action="/admin/users/{{user.id}}?_method=DELETE" id="delete-form-{{user.id}}">
+                        <a class="secondary-red-button">Remover</a>
+                        <button type="submit" class="user-remove-button" form="delete-form-{{user.id}}"></button>
+                        <input type="hidden" name="id" value="{{user.id}}">
+                    </form>
+                </div>
+            </div>
+
+            {% endfor %}
+            
+        </section>
+        
+    </main>
+
+    {% include "admin/confirm.njk" %}
+
+{% endblock %}

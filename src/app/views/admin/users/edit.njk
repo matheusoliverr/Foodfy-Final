@@ -1,0 +1,39 @@
+{% extends "admin/layouts.njk" %}
+
+{% block content %}
+    <main class="admin-main input delete-form">
+
+        <form method="POST" action="/admin/users/{{user.id}}?_method=DELETE" id="delete-form">
+            <input type="hidden" name="id" value="{{user.id}}">
+        </form>
+
+        <form method="POST" action="/admin/users/{{user.id}}?_method=PUT" class="user-create-form">
+
+            <div class="user-fields-header">
+                <h1>Atualizar Usuário</h1>
+                
+                <div class="form-buttons">
+                    <button class="form-button red-background" form="delete-form">Deletar</button>
+                    <button class="form-button purple-background">Salvar</button>
+                </div>
+            </div>
+
+            <section class="user-fields">
+
+            {% include "admin/users/fields.njk" %}
+
+            <div class="input-area radio">
+                <input type="radio" name="is_admin">
+                <p>Administrador</p>
+            </div>
+
+            <input type="hidden" name="id" value="{{user.id}}">
+
+            </section>
+        </form>
+
+    </main>
+
+    {% include "admin/confirm.njk" %}
+
+{% endblock %}

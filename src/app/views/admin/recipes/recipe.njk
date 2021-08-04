@@ -1,0 +1,72 @@
+{% extends "admin/layouts.njk" %}
+
+{% block content %}
+
+    <main>
+
+        <div class="recipe-card detailed">
+            <div>
+                <h1>Receita: {{recipe.title}}</h1>
+                <button class="edit-button purple-background" id="/admin/recipes/{{recipe.id}}/edit" onclick="redirectButtonToIdLocation(this)">Editar receita</button>
+            </div>
+            {% if not recipe.files_path[0] %}
+            <img id="no-image" src="http://placehold.it/508x508?text=RECEITA SEM FOTO" alt="no_image">
+            {% else %}
+            <img class="img-detailed admin" src="{{recipe.files_path[0]}}" alt="{{recipe.title}}">
+            {% endif %}
+            <div class="image-change">
+                {% if recipe.files_path[0] %}
+                {% for file in recipe.files_path %}
+                <img class="miniature-image {% if loop.index0 == 0 %}active{% endif %}" src="{{file}}" onclick="Photos.setMainImage(event)">
+                {% endfor %}
+                {% endif %}
+            </div>
+            <p class="recipe-name detailed">{{recipe.title}}</p>
+            <p class="creator-name detailed">Por {{chef.name}}</p>
+        </div>
+
+        <section class="recipe-details">
+
+            <div class="detail"> 
+                <div class="details-title"  id="ingredients">
+                    <h1>Ingredientes</h1>
+                    <a class="button grey-button">ESCONDER</a>
+                </div>
+                <div class="details-content">
+                    {% for ingredient in recipe.ingredients%}
+                    <li>- {{ingredient}};</li>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="detail"> 
+                <div class="details-title"  id="preparation">
+                    <h1>Modo de preparo</h1>
+                    <a class="button grey-button">ESCONDER</a>
+                </div>
+                <div class="details-content">
+                    {% for preparation in recipe.preparation if recipe.preparation.length !== "1" %}
+                    <li>- {{preparation}};</li>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% if recipe.information !== "" %}
+                <div class="detail"> 
+                    <div class="details-title"  id="information">
+                        <h1>Informações adicionais</h1>
+                        <a class="button grey-button">ESCONDER</a>
+                    </div>
+                    <div class="details-content">
+                        <p>{{recipe.information}}</p>
+                    </div>
+                </div>
+            {% endif %}
+
+        </section>
+            
+    </main>
+
+    
+
+{% endblock %}

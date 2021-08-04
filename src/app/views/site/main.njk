@@ -1,0 +1,49 @@
+{% extends "site/layouts.njk" %}
+
+{% block filter %}
+{% include "site/parts/filter.njk" %}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <section class="introduction-card">
+            <div id="introduction-text">
+                <h1>As melhores receitas</h1>
+                <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
+            </div>
+            <div id="introduction-img">
+                <img src="/images/assets/chef.png" alt="chef">
+            </div>
+        </section>
+
+        <h1 id="most-accessed">Mais acessadas</h1>
+
+        <section class="introduction-recipes">
+
+            {% for recipe in recipes %}
+                {% if loop.index <= '6' %}
+                <div class="recipe-card">
+                    <img class="recipe-img" id="{{recipe.id}}" src="{{recipe.files_path[0]}}" alt="{{recipe.title}}">
+                    <p class="recipe-name">{{recipe.title}}</p>
+                    {% for chef in chefs %}
+                        {% if chef.id == recipe.chef_id %}
+                        <p class="creator-name">Por {{chef.name}}</p>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for user in users %}
+                        {% if user.id == recipe.user_id %}
+                        <p class="creator-name">Por {{user.name}}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endfor %}
+            
+        </section>
+        
+    </main>
+
+    
+
+{% endblock %}

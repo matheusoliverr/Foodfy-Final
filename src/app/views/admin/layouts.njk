@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Foodfy</title>
+    {% include "site/parts/styles.njk" %}
+    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/photos.js" defer></script>
+    <script src="/scripts/forms.js" defer></script>
+</head>
+
+<body>
+
+    <header class="admin-header">
+        <div>
+            <div class="admin-header-logo">
+                <a class="logo" href="/main"><img src="/images/assets/logo-adm.png" alt=""></a>
+            </div>
+            <div class="admin header-links">
+            {% if session.isAdmin == true %}
+                <a href="/admin/recipes" class="grey-button">RECEITAS</a>
+                <a href="/admin/chefs" class="grey-button">CHEFS</a>
+                <a href="/admin/users" class="grey-button">USUÁRIOS</a>
+                {% else %}
+                    <a href="/admin/profile/recipes" class="grey-button">RECEITAS</a>
+                    <a href="/admin/profile" class="grey-button">USUÁRIO</a>
+            {% endif %}
+                
+            </div>
+
+            <a href="/main" class="exit-button">SAIR</a>
+
+        </div>
+
+        {% include "site/parts/alert-messages.njk" %}
+
+    </header>
+
+    {% block content %}
+
+    {% endblock %}  
+    
+
+</body>
+
+</html>

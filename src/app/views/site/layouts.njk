@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Foodfy</title>
+    {% include "site/parts/styles.njk" %}
+    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/photos.js" defer></script>
+    <script src="/scripts/forms.js" defer></script>
+</head>
+
+<body>
+    
+
+    <header>
+        
+            <a class="logo" href="/main"><img src="/images/assets/logo.png" alt=""></a>
+
+            <form action="/logout" method="post" id="logout-form">
+
+            <div class="header-links">
+                
+                <a class="about-link" href="/about">Sobre</a>
+                <a class="recipe-link" href="/recipes">Receitas</a>
+                <a class="chefs-link" href="/chefs">Chefs</a>
+                
+                <div class="profile-links">
+                    {% if session.userId %}
+                        <a href="/admin/profile">Minha Conta</a>
+                        {% else %}
+                            <a href="/login">Minha Conta</a>
+                    {% endif %}
+                    {% if session.userId %}
+                    <ul class="submenu">
+                        <li><a href="/admin/profile">Perfil</a></li>
+                        <li><a href="/admin/recipes">Receitas</a></li>
+                        <li><button type="submit" form="logout-form">Sair</button></li>
+                    </ul>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            </form>
+        
+
+        {% block filter %}
+        
+        {% endblock %}
+
+        {% include "site/parts/alert-messages.njk" %}
+
+    </header>
+
+
+
+    {% block content %}
+
+    {% endblock %}  
+
+    <footer>
+        <p>Todos direitos reservados, receitas Foodfy.</p>
+    </footer>
+
+    
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+{% extends "site/layouts.njk" %}
+
+{% block content %}
+    <main class="admin-main">
+
+
+        <section class="listing-chefs site">
+
+            {% for chef in chefs %}
+            <div class="chef-card listing">
+                <img class="chef-img" id="{{chef.id}}" src="{{chef.file_path}}" alt="{{chef.name}}">
+                <div>
+                <p class="chef-name">{{chef.name}}</p>
+                <p>{{chef.total_recipes}} Receita{% if chef.total_recipes != 1%}s{% endif %}</p>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </section>
+        
+    </main>
+
+    
+
+{% endblock %}

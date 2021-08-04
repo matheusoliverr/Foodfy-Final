@@ -1,0 +1,31 @@
+{% extends "admin/layouts.njk" %}
+
+{% block content %}
+    <main class="admin-main input">
+
+        <form method="POST" action="/admin/users" class="user-create-form">
+
+            <div class="user-fields-header">
+                <h1>Criar Usuário</h1>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="form-button purple-background">Salvar</button>
+                    <a href="/admin/users" class="form-button secondary-grey-background">Cancelar</a>
+                </div>
+            </div>
+
+            <section class="user-fields">
+
+            {% include "admin/users/fields.njk" %}
+
+            <div class="input-area radio">
+                <input type="radio" name="is_admin">
+                <p>Administrador</p>
+            </div>
+
+            </section>
+        </form>
+
+    </main>
+
+{% endblock %}

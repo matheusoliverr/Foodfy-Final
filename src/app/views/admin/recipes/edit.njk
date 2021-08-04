@@ -1,0 +1,65 @@
+{% extends "admin/layouts.njk" %}
+
+{% block content %}
+
+    <main class="admin-main input delete-area recipes">
+
+        <form method="POST" action="/admin/recipes?_method=DELETE" id="delete-form">
+            <input type="hidden" name="id" value="{{recipe.id}}">
+        </form>
+        <form method="POST" action="/admin/recipes?_method=PUT" class="recipe-form" enctype="multipart/form-data">
+
+            <div>
+                <h1>Editando receita</h1>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="form-button red-background" form="delete-form">Deletar</button>
+                    <button type="submit" class="form-button purple-background">Salvar receita</button>
+                </div>
+            </div>
+
+            {% include "admin/recipes/fields.njk" %}
+
+            <div class="input-area ingredients">
+                <h3>Ingredientes</h3>
+                <div class="input-array">
+                    {% for ingredient in recipe.ingredients %}
+                    <div class="latest-inputs">
+                        <input type="text" name="ingredients[]" value="{{ingredient}}">
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="button" class="add-ingredients purple-button" onclick="addNewInput(event)">Adicionar novo ingrediente</button>
+            </div>
+
+
+            <div class="input-area preparation">
+                <h3>Modo de preparo</h3>
+                <div class="input-array">
+                    {% for prep in recipe.preparation %}
+                    <div class="latest-inputs">
+                        <input type="text" name="preparation[]" value="{{prep}}">
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="button" class="add-preparation purple-button" onclick="addNewInput(event)">Adicionar novo passo</button>
+            </div>
+
+
+            <div class="input-area">
+                <h3>Informações adicionais</h3>
+                <textarea class="last-input" cols="30" rows="5" name="information">{{recipe.information}}</textarea>
+            </div>
+
+            <input type="hidden" name="id" value="{{recipe.id}}">
+
+            <input type="hidden" name="file_id" value="{{recipe.file_id}}">
+
+
+        </form>
+        
+    </main>
+
+    {% include "admin/confirm.njk" %}
+
+{% endblock %}

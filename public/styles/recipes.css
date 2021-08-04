@@ -1,0 +1,164 @@
+#most-accessed{
+    max-width: 940px;
+    text-align: left;
+    font-size: 24px;
+    margin: 50px auto 20px;
+}
+
+.introduction-recipes{
+    max-width: 940px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 30px;
+}
+
+.introduction-recipes.extended{
+    margin-top:50px;
+}
+
+.introduction-recipes h1{
+    font-size: 24px;
+    margin: 50px 0 20px;
+}
+
+.recipe-img{
+    width: 300px;
+    height: 140px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    height: 140px;
+}
+
+.recipe-name{
+    font-size: 18px;
+    margin-bottom: 5px
+}
+
+.creator-name{
+    font-size: 14px;
+    color: #777777;
+}
+
+/*Recipe Details*/
+
+.recipe-card.detailed, .chef-card.detailed{
+    max-width: 940px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.img-detailed{
+    width: 940px;
+    height: 280px;
+    border-radius: 15px;
+    margin: 50px 0 0;
+    object-fit: cover;
+}
+
+#no-image{
+    width: 940px;
+    height: 280px;
+    border-radius: 15px;
+    margin: 50px 0 0;
+    object-fit: cover;
+}
+
+.recipe-name.detailed, .chef-name.detailed{
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.creator-name.detailed{
+    font-size: 20px;
+}
+
+.recipe-details{
+    max-width: 940px;
+    margin: 50px auto 0;
+}
+
+.details-title{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    align-items: center;
+}
+
+#ingredients{
+    max-width: 300px;
+}
+
+#preparation{
+    max-width:570px;
+}
+
+#information{
+    max-width: 780px;
+}
+
+.details-content{
+    margin: 20px 0 39px;
+    font-size: 18px;
+    color: #444444;
+    line-height:28px;
+}
+
+.recipe-card.detailed .image-change{
+    display: flex;
+    margin: 0;
+    justify-content: flex-end;
+}
+
+.recipe-card.detailed .image-change img{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 3.5px;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    opacity: 0.5
+}
+
+.recipe-card.detailed .image-change img.active{
+    opacity: 1;
+}
+
+.recipe-card.detailed .image-change img:hover{
+    opacity: 1;
+    transition: 200ms
+}
+
+/*Recipe details-hidden*/
+
+.details-content.hidden{
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    margin-top: 5px;
+}
+
+/* Pagination */
+
+.recipes-listing{
+    height: 100%;
+    display: grid;
+    grid-template-rows: 5fr 1fr;
+}
+
+.paginate{
+    align-self: end;
+   justify-self: center;
+   font-size: 20px;
+}
+
+.paginate a{
+    color: var(--purple-color);
+    margin-right: 8px
+}
+
+.paginate a:hover{
+    font-weight: bold;
+}

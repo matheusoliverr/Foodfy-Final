@@ -1,0 +1,62 @@
+{% extends "site/layouts.njk" %}
+
+{% block content %}
+
+    <main>
+
+        <div class="recipe-card detailed">
+            <img class="img-detailed" src="{{recipe.files_path[0]}}" alt="{{recipe.title}}">
+            <div class="image-change">
+                {% for file in recipe.files_path %}
+                <img class="miniature-image {% if loop.index0 == 0 %}active{% endif %}" src="{{file}}" onclick="Photos.setMainImage(event)">
+                {% endfor %}
+            </div>
+            <p class="recipe-name detailed">{{recipe.title}}</p>
+            <p class="creator-name detailed">Por {{chef.name}}</p>
+        </div>
+
+        <section class="recipe-details">
+
+            <div class="detail"> 
+                <div class="details-title"  id="ingredients">
+                    <h1>Ingredientes</h1>
+                    <a class="button grey-button">ESCONDER</a>
+                </div>
+                <div class="details-content">
+                    {% for ingredient in recipe.ingredients %}
+                    <li>- {{ingredient}};</li>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="detail"> 
+                <div class="details-title"  id="preparation">
+                    <h1>Modo de preparo</h1>
+                    <a class="button grey-button">ESCONDER</a>
+                </div>
+                <div class="details-content">
+                    {% for preparation in recipe.preparation %}
+                    <li>- {{preparation}};</li>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="detail"> 
+                {% if recipe.information !== "" %}
+                <div class="details-title"  id="information">
+                    <h1>Informações adicionais</h1>
+                    <a class="button grey-button">ESCONDER</a>
+                </div>
+                <div class="details-content">
+                    <p>{{recipe.information}}</p>
+                </div>
+                {% endif %}
+            </div>
+
+        </section>
+            
+    </main>
+
+    
+
+{% endblock %}

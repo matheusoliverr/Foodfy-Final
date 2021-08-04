@@ -1,0 +1,36 @@
+<div class="input-area">
+    <h3>Nome</h3>
+    <input type="text" name="name" value="{{chef.name}}">
+</div>
+
+<div class="input-area">
+    <h3>Avatar</h3>
+    {% if chef.file_path %}
+    <p class="current-path">{{chef.file_path}}</p>
+    {% endif %}
+    <div class="input-file">
+        <input 
+            id="photo-upload"
+            type="file" 
+            name="path_file" 
+            accept="image/*" 
+            onchange="Photos.showPath(event)"
+        >
+        <p class="input-file-button purple-background">Enviar Avatar</p>
+    </div>
+</div>
+
+<div id="avatar-show">
+
+</div>
+
+<input type="hidden" name="file_id" value="{{chef.file_id}}">
+
+
+
+
+
+
+
+
+    

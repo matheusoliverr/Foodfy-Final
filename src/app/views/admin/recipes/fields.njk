@@ -1,0 +1,57 @@
+<div class="input-area">
+    <h3>Imagem da receita</h3>
+    <div class="recipe-images">
+        <div class="input-recipe-image">
+            <input type="file" name="file" multiple accept="image/*" onchange="Photos.showPhoto(event)">
+            <p><i class="material-icons grey-button">add</i></p>
+        </div>
+        <div id="image-show">
+            {% if recipe.files_path %}
+            {% for path in recipe.files_path %}
+            <div class="image-show-area" id={{recipe.files_id[loop.index0]}}>
+                <img src="{{path}}" alt="{{recipe.name}}">
+                <i class="material-icons" onclick="Photos.deleteOldPhoto(event)">close</i>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <input type="hidden" name="removed_files">
+    </div>
+</div>
+
+<div class="input-area">
+    <h3>Nome da receita</h3>
+    <input type="text" name="title" value="{{recipe.title}}">
+</div>
+
+{% if session.isAdmin == true %}
+
+<div class="input-area">
+    <h3>Chef</h3>
+    <select name="chef_id">
+        <option value="">Selecione um chef</option>
+        {% for chef in chefs %}
+        <option value="{{chef.id}}" {% if chef.id == recipe.chef_id %}selected{% endif %}>{{chef.name}}</option>
+        {% endfor %}
+    </select>
+</div>
+
+{% else %}
+
+<div class="input-area">
+    <h3>Chef</h3>
+    <p class="current-path">{{chef.name}}</p>
+</div>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+    

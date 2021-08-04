@@ -1,0 +1,93 @@
+body.user-fields{
+    max-width: 500px;
+    margin: 0 auto
+}
+
+body.user-fields button{
+    padding: 9px 35px;
+    background-color: #6558C3;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-header{
+    justify-content: center;
+    display: flex
+}
+
+.login-main{
+    
+    margin-top: 146px;
+}
+
+.login-main h2{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#login-form input,
+#forgot-password-form input,
+#reset-password-form input{
+    width: 100%
+}
+
+.login-main .footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+    font-size: 16px;
+    align-items: center;
+}
+
+.login-main .footer.forgot-password{
+    justify-content: flex-end;
+}
+
+.login-main .footer a{
+    color: #969696;
+    font-weight: bold;
+}
+
+#login-form h3,
+#forgot-password-form h3,
+#reset-password-form h3{
+    margin-top: 35px
+}
+
+.admin-main.input .user-create-form .user-fields-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-main.input .user-create-form section.user-fields{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-sizing: border-box;
+}
+
+.user-create-form section.user-fields input{
+    width: 450px;
+}
+
+.user-create-form section.user-fields .input-area.radio{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.user-create-form section.user-fields .input-area input[type="radio"]{
+    width: 15px;
+    margin: 0 8px 0 0;
+    border: 1px solid #DDDDDD;
+    background: #FFFFFF;
+}
+
+.user-create-form section.user-fields .input-area.radio p{
+    font-size: 16px;
+    font-weight: bold;
+}

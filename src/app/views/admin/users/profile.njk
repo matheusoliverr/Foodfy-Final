@@ -1,0 +1,32 @@
+{% extends "admin/layouts.njk" %}
+
+{% block content %}
+    <main class="admin-main input">
+
+        <form method="POST" action="/admin/profile?_method=PUT" class="user-create-form">
+
+            <div class="user-fields-header">
+                <h1>Bem vindo {{shortName}}</h1>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="purple-background">Salvar</button>
+                </div>
+            </div>
+
+            <section class="user-fields">
+
+            {% include "admin/users/fields.njk" %}
+
+            <div class="input-area">
+                <h3>Senha</h3>
+                <input type="password" name="password" placeholder="Digite a senha">
+            </div>
+
+            <input type="hidden" name="id" value="{{user.id}}">
+
+            </section>
+        </form>
+
+    </main>
+
+{% endblock %}

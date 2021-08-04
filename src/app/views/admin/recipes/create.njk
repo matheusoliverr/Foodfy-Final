@@ -1,0 +1,49 @@
+{% extends "admin/layouts.njk" %}
+
+{% block content %}
+    <main class="admin-main input recipes">
+
+        <form method="POST" action="/admin/recipes" class="recipe-form" enctype="multipart/form-data">
+
+            <div>
+                <h1>Criando receita</h1>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="form-button purple-background">Salvar receita</button>
+                </div>
+            </div>
+
+            {% include "admin/recipes/fields.njk" %}
+
+            <div class="input-area ingredients">
+                <h3>Ingredientes</h3>
+                <div class="input-array">
+                    <div class="latest-inputs">
+                        <input type="text" name="ingredients[]">
+                    </div>
+                </div>
+                <button type="button" class="add-ingredients purple-button" onclick="addNewInput(event)">Adicionar novo ingrediente</button>
+            </div>
+
+
+            <div class="input-area preparation">
+                <h3>Modo de preparo</h3>
+                <div class="input-array">
+                    <div class="latest-inputs">
+                        <input type="text" name="preparation[]">
+                    </div>
+                </div>
+                <button type="button" class="add-preparation purple-button" onclick="addNewInput(event)">Adicionar novo passo</button>
+            </div>
+
+
+            <div class="input-area">
+                <h3>Informações adicionais</h3>
+                <textarea class="last-input" cols="30" rows="5" name="information">{{recipe.information}}</textarea>
+            </div>
+
+        </form>
+
+    </main>
+
+{% endblock %}
